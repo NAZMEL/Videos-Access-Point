@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +13,11 @@ namespace VideosAccessPoint
     {
         protected void Application_Start()
         {
+            if (!Directory.Exists(Server.MapPath("~/UploadedVideos")))
+            {
+                Directory.CreateDirectory(Server.MapPath("~/UploadedVideos"));
+            }
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

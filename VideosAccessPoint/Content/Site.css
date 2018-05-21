@@ -56,13 +56,7 @@ input[type=file]{
     color:darkcyan;
 }
 
-.block-date {
-    text-align: right;
-    position: relative;
-    margin-top: -33px;
-    margin-left: 920px;
-    width: 175px;
-}
+
 .block-date:hover{
     cursor: pointer;
 }

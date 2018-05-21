@@ -222,9 +222,7 @@
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Authentification\RegisterSuccess.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UploadedVideos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

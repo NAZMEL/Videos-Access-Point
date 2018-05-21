@@ -11,17 +11,20 @@
 
     <div class="panel-body">
 
-        <div style="max-width: 100%;  height: 65px; font-size: 16px; margin: 10px;">
-            <p class="posted-user" title="Posted by @Model._User.Name"><span class="glyphicon glyphicon-user"></span> @Model._User.Name</p>
-            <div class="block-date" title="Time of posting">
-                <p><span class="glyphicon glyphicon-calendar"></span> @Model.Date </p>
+        <div class="row">
+            <div class="col-sm-4">
+                <p class="posted-user" title="Posted by @Model._User.Name"><span class="glyphicon glyphicon-user"></span> @Model._User.Name</p>
+                <div style="position: static; margin-top: 15px;">
+                    @Html.Label("Genre: ")
+                    @Html.DisplayTextFor(model => Model.Genre)
+                </div>
             </div>
-            <div style="position: static; margin-top: 15px;">
-                @Html.Label("Genre: ")
-                @Html.DisplayTextFor(model => model.Genre)
+            <div class="col-sm-6"></div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="text-align: right;">
+                <p title="Time of posting" class="block-date"><span class="glyphicon glyphicon-calendar"></span> @Model.Date</p>
             </div>
         </div>
-
 
         <div class="embed-responsive  embed-responsive-16by9">
             <video controls width="520" height="440" class="embed-responsive-item">
