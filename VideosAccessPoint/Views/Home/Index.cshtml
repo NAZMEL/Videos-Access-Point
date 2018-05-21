@@ -1,0 +1,89 @@
+﻿@*@model IEnumerable<VideosAccessPoint.Models.Video>*@
+
+@model PagedList.IPagedList<VideosAccessPoint.Models.Video>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "My videos";
+}
+
+<div class="container" style="margin-top: 25px; text-align: right;">
+    <input class="btn btn-primary" type="button" value="Add a new video" onclick="location.href='@Url.Action("AddNewVideo", "Home")'" />
+</div>
+
+<div class="page-header" style="text-align: center; margin-top: 15px;">
+        <h1>My Videos</h1>
+</div>
+        @*control: if model is null*@
+        @if (!Model.Any())
+        {
+            <div class="container">
+                <h3>
+                    Your list is empty. Please begin fill it follow <a href='@Url.Action("AddNewVideo", "Home")'>this link</a>
+                </h3>
+            </div>
+        }
+        else
+        {
+            <div class="container" style="border: 1px solid black; min-height: 500px; padding: 15px; border-radius: 5px;">
+                <div class="panel-group">
+                    @foreach (var item in Model)
+                    {
+                        <div class="panel panel-default" style="margin-bottom: 15px;">
+                            <div class="panel-heading">
+                                <h2 class="title-video"><a href="/Home/Article/@item.Id">@item.Title</a></h2>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <div style="max-width: 100%;  height: 65px; font-size: 16px; margin: 10px;">
+                                    <p class="posted-user" title="Posted by @item._User.Name"><span class="glyphicon glyphicon-user"></span> @item._User.Name</p>
+                                    <div class="block-date" title="Time of posting">
+                                        <p><span class="glyphicon glyphicon-calendar"></span> @item.Date</p>
+                                    </div>
+                                    <div style="position: static; margin-top: 15px;">
+                                        @Html.Label("Genre: ")
+                                        @Html.DisplayTextFor(model => item.Genre)
+                                    </div>
+
+                                </div>
+
+                                <hr />
+                                <div class="embed-responsive  embed-responsive-16by9">
+                                    <video controls width="520" height="440" class="embed-responsive-item">
+                                        <source src="~/UploadedVideos/@item.VideoFormat" />
+                                    </video>
+                                </div>
+
+                                @{
+                                    //if description have more than 1000 symbols then cutting it for view
+                                    string content = item.Description;
+
+                                    if (content != null)
+                                    {
+                                        if (content.Length > 1000)
+                                        {
+                                            content = content.Substring(0, 800);
+                                            <hr />
+                                            <div style="margin-top: 15px; font-size: 16px; text-indent: 1.25cm;">
+                                                @Html.DisplayFor(model => content)<span>...<a href="/Home/Article/@item.Id" style="color: gray; font-style: italic;">   read full</a></span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <hr />
+                                            <div style="margin-top: 15px; font-size: 16px; text-indent: 1.25cm;">
+                                                @Html.DisplayFor(model => content)
+                                            </div>
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+                    <br />
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+        }

@@ -1,0 +1,80 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 300px;
+}
+
+/*My code*/
+
+
+.textarea-description {
+    color: black;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.form-hoizontal textarea{
+    width: 600px;
+    border-style: double;
+}
+
+input[type=file]{  
+    margin-top:6px;
+}
+
+.genre-list {
+    margin-top: 6px;
+}
+
+.title-video {
+    text-align: center;
+    font-weight: bold;
+}
+
+.title-video a {
+    color:darkcyan;
+}
+
+.block-date {
+    text-align: right;
+    position: relative;
+    margin-top: -33px;
+    margin-left: 920px;
+    width: 175px;
+}
+.block-date:hover{
+    cursor: pointer;
+}
+
+.posted-user{
+    width: 200px;
+}
+
+.posted-user:hover {
+    cursor: pointer;
+}
+
+.embed-responsive, embed-responsive-16by9 :hover {
+    cursor: pointer;
+}

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" >
+        <div class="container">
+            <div class="navbar-header">
+                 @Html.ActionLink("Videos Access Point", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+           
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("My Videos", "Index", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a href="~/Authentification/SignOut">Logout <span class="glyphicon glyphicon-log-out"></span></a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="../Authentification/Register">Registration</a>
+                        </li>
+                        <li>
+                            <a href="../Authentification/SignIn">Sign In</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content" >
+        @RenderBody()
+        <hr />
+        
+        <footer>
+            <div class="navbar navbar-inverse navbar-fixed-bottom">
+                <div class="container" style="color: white; margin-top: 15px;">
+                        <p>&copy; @DateTime.Now.Year – Videos Access Point</p>
+                    </div>
+                </div>
+        </footer>         
+     </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>
