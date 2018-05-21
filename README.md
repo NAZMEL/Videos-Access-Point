@@ -23,4 +23,4 @@
 * Отримати запис про конкретний відеоролик.
 * Завантажити нову інформацію про відеоролик. При цьому дані, що записуються повинні відповідати вимогам: назва не може бути порожньою, посилання повинне бути валідною URL адресою.
 
-#### You may view it for the link: http://videosaccesspoing.somee.com
+#### You may view it follow the link: http://videosaccesspoing.somee.com
