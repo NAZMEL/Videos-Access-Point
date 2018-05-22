@@ -10,20 +10,24 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" >
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                 @Html.ActionLink("Videos Access Point", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Videos Access Point", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-           
 
-            <div class="navbar-collapse collapse">
+            <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("My Videos", "Index", "Home")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li>@Html.ActionLink("My Videos", "Index", "Home")</li>
                         <li>
-                            <a href="~/Authentification/SignOut">Logout <span class="glyphicon glyphicon-log-out"></span></a>
+                            <a href="~/Authentification/SignOut"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
                         </li>
                     }
                     else
@@ -39,21 +43,22 @@
             </div>
         </div>
     </div>
-    <div class="container body-content" >
+    <div class="container body-content">
         @RenderBody()
         <hr />
-        
         <footer>
             <div class="navbar navbar-inverse navbar-fixed-bottom">
                 <div class="container" style="color: white; margin-top: 15px;">
-                        <p>&copy; @DateTime.Now.Year – Videos Access Point</p>
-                    </div>
+                    <p>&copy; @DateTime.Now.Year – Videos Access Point</p>
                 </div>
-        </footer>         
-     </div>
+            </div>
+        </footer>
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+
+    </div>
+  
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
