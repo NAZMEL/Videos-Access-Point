@@ -161,9 +161,25 @@ namespace VideosAccessPoint.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Sorting(string genre)
+        {
+            Session["genreStatus"] = genre;
+            return RedirectToAction("Index");
+        }
+
         // Get data from DB for one User in date sort
         private IEnumerable<Video> GetDataFromVideosDB()
         {
+            var genre = Session["genreStatus"];
+            try
+            {
+                if (genre.ToString() != "all")
+                {
+                    return db.Videos.Include(u => u._User).Where(v => v._User.Name == User.Identity.Name).Where(v => v.Genre == genre.ToString()).OrderByDescending(v => v.Date);
+                }
+            }
+            catch (System.NullReferenceException) { }
+
             return db.Videos.Include(u => u._User).Where(v => v._User.Name == User.Identity.Name).OrderByDescending(v => v.Date);
         }
       

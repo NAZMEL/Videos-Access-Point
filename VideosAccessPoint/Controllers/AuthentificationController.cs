@@ -96,6 +96,7 @@ namespace VideosAccessPoint.Controllers
                     if(user != null)
                     {
                         FormsAuthentication.SetAuthCookie(newUser.Name, true);
+                        Session["genreStatus"] = "all";
                         return RedirectToAction("Index", "Home");
                     }
                     else

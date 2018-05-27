@@ -14,6 +14,26 @@
 <div class="page-header" style="text-align: center; margin-top: 15px;">
     <h1>My Videos</h1>
 </div>
+
+<div class="panel panel-default" margin-left: 10px;">
+    @using (@Html.BeginForm("Sorting", "Home", new { @class = "form-inline" }))
+    {
+    <div class="panel-body">
+    <div class="form-group">
+        @Html.Label("Sorting", htmlAttributes: new { @class = "control-label col-md-1 col-sm-1", style = "font-size: 16px; max-width: 150px;" })
+        <div class = "col-md-1 col-sm-1" >
+            @Html.DropDownList("Genre", new SelectList(new string[] { "all", "classic", "joke", "cartoon", "news", "sport", "history", "adventure", "psyhology", "lirycs", "other..." }), new {style = " margin-top: 2px; " })
+        </div>
+       
+        <div class="col-md-1 col-sm-1">
+            <input type="submit" value="Ok" class="btn btn-info"  style="padding: 1px 10px 1px 10px; "/>
+        </div>
+    </div>
+    </div>
+
+    }
+</div>
+
 @*control: if model is null*@
 @if (!Model.Any())
 {
@@ -41,7 +61,7 @@ else
                                 <div style="position: static; margin-top: 15px;">
                                     @Html.Label("Genre: ")
                                     @Html.DisplayTextFor(model => item.Genre)
-                                </div>
+                                </div> 
                             </div>
                             <div class="col-sm-6"></div>
                             <div class="col-sm-4"></div>
@@ -81,13 +101,13 @@ else
                             }
                         }
                     </div>
-                </div>
+                    </div>
             }
             <br />
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
         </div>
-    </div>
+        </div>
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
