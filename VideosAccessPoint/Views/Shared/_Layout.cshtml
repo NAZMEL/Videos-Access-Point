@@ -21,7 +21,10 @@
                 @Html.ActionLink("Videos Access Point", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6c77718acb644e963fa1fe53def1313e48b019bb
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     @if (User.Identity.IsAuthenticated)
@@ -49,12 +52,24 @@
         <hr />
         <footer>
             <div class="navbar navbar-inverse navbar-fixed-bottom">
+<<<<<<< HEAD
                 <div class="container-fluid text-center text-md-left">
                     <p style="margin-top: 15px; color: white;">&copy; @DateTime.Now.Year – Videos Access Point</p>
                 </div>
             </div>
         </footer>
     </div>
+=======
+                <div class="container" style="color: white; margin-top: 15px;">
+                    <p>&copy; @DateTime.Now.Year – Videos Access Point</p>
+                </div>
+            </div>
+        </footer>
+
+
+    </div>
+  
+>>>>>>> 6c77718acb644e963fa1fe53def1313e48b019bb
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

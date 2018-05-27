@@ -14,6 +14,7 @@
 <div class="page-header" style="text-align: center; margin-top: 15px;">
     <h1>My Videos</h1>
 </div>
+<<<<<<< HEAD
 
 <div class="panel panel-default" margin-left: 10px;">
     @using (@Html.BeginForm("Sorting", "Home", new { @class = "form-inline" }))
@@ -81,6 +82,55 @@ else
                             //if description have more than 1000 symbols then cutting it for view
                             string content = item.Description;
 
+=======
+@*control: if model is null*@
+@if (!Model.Any())
+{
+    <div class="container">
+        <h3>
+            Your list is empty. Please begin fill it follow <a href='@Url.Action("AddNewVideo", "Home")'>this link</a>
+        </h3>
+    </div>
+}
+else
+{
+    <div class="container" style="border: 1px solid black; min-height: 500px; padding: 15px; border-radius: 5px;">
+        <div class="panel-group">
+            @foreach (var item in Model)
+            {
+                <div class="panel panel-default" style="margin-bottom: 15px;">
+                    <div class="panel-heading">
+                        <h2 class="title-video"><a href="/Home/Article/@item.Id">@item.Title</a></h2>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p class="posted-user" title="Posted by @item._User.Name"><span class="glyphicon glyphicon-user"></span> @item._User.Name</p>
+                                <div style="position: static; margin-top: 15px;">
+                                    @Html.Label("Genre: ")
+                                    @Html.DisplayTextFor(model => item.Genre)
+                                </div>
+                            </div>
+                            <div class="col-sm-6"></div>
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4" style="text-align: right;">
+                                <p title="Time of posting" class="block-date"><span class="glyphicon glyphicon-calendar"></span> @item.Date</p>
+                            </div>
+                        </div>
+
+                        <hr />
+                        <div class="embed-responsive  embed-responsive-16by9">
+                            <video controls width="520" height="440" class="embed-responsive-item">
+                                <source src="~/UploadedVideos/@item.VideoFormat" />
+                            </video>
+                        </div>
+
+                        @{
+                            //if description have more than 1000 symbols then cutting it for view
+                            string content = item.Description;
+
+>>>>>>> 6c77718acb644e963fa1fe53def1313e48b019bb
                             if (content != null)
                             {
                                 if (content.Length > 1000)
@@ -101,13 +151,21 @@ else
                             }
                         }
                     </div>
+<<<<<<< HEAD
                     </div>
+=======
+                </div>
+>>>>>>> 6c77718acb644e963fa1fe53def1313e48b019bb
             }
             <br />
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
         </div>
+<<<<<<< HEAD
         </div>
+=======
+    </div>
+>>>>>>> 6c77718acb644e963fa1fe53def1313e48b019bb
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
